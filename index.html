@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小跳板</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f6f6f6;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .address-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .address-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 5px;
+      border-radius: 20px;
+    }
+
+    .address-bar button {
+      margin-left: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .address-bar button:hover {
+      background-color: #0056b3;
+    }
+
+    .protocol-options {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .protocol-options label {
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="address-bar">
+      <input type="text" id="url" placeholder="请输入网址">
+      <button onclick="redirect()">跳转</button>
+    </div>
+
+    <div class="protocol-options">
+      <label>
+        <input type="radio" name="protocol" value="http" checked> http
+      </label>
+      <label>
+        <input type="radio" name="protocol" value="https"> https
+      </label>
+    </div>
+
+    <div class="footer">
+      Copyright &copy; 2025 lingyicute
+    </div>
+  </div>
+
+  <script>
+    function redirect() {
+      const protocol = document.querySelector('input[name="protocol"]:checked').value;
+      const url = document.getElementById('url').value.trim();  
+      if (url) {
+        window.location.href = `${protocol}://${url}`;
+      } else {
+        alert('请输入有效的网址！');
+      }
+    }
+  </script>
+</body>
+</html>
